@@ -27,7 +27,7 @@ namespace Graph
             }
         }
 
-        public void DFS()
+        public void DFS(int startNode)
         {
             visited = new Dictionary<int, bool>();
             foreach (int key in graph.Keys)
@@ -38,8 +38,8 @@ namespace Graph
             {
                 AddToVisitedPoint(values);
             }
-            
-       
+
+            DFSfunc(startNode);
         }
 
         private void AddToVisitedPoint(int node)
@@ -62,7 +62,17 @@ namespace Graph
         {
             visited[node] = true;
 
-            
+            if (graph.ContainsKey(node))
+            {
+                foreach (int nextNode in graph[node])
+                {
+                    if (visited[nextNode] == false)
+                    {
+                        Console.WriteLine("{0} -> {1}", node, nextNode);
+                        DFSfunc(nextNode);
+                    }
+                }
+            }
 
         }
     }
