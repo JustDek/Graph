@@ -6,10 +6,7 @@ namespace Graph
 {
     class Graph
     {
-        public Graph()
-        {
 
-        }
 
     }
 }
