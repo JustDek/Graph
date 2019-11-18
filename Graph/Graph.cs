@@ -9,7 +9,7 @@ namespace Graph
     {
         Dictionary<int, List<int>> graph;
 
-        private List<bool> visited;
+        private Dictionary<int, bool> visited;
         public Graph()
         {
             graph = new Dictionary<int, List<int>>();
@@ -29,13 +29,33 @@ namespace Graph
 
         public void DFS()
         {
-            visited = new List<bool>();
-            for (int i = 0; i < graph.Count(); i++)
+            visited = new Dictionary<int, bool>();
+            foreach (int key in graph.Keys)
             {
-                visited.Add(false);
+                AddToVisitedPoint(key);
+            }
+            foreach (List<int> values in graph.Values)
+            {
+                AddToVisitedPoint(values);
             }
             
        
+        }
+
+        private void AddToVisitedPoint(int node)
+        {
+            visited.Add(node, false);
+        }
+
+        private void AddToVisitedPoint(List<int> nodes)
+        {
+            foreach (int value in nodes)
+            {
+                if (!visited.ContainsKey(value))
+                {
+                    visited.Add(value, false);
+                }
+            }
         }
 
         private void DFSfunc(int node)
