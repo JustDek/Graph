@@ -16,7 +16,10 @@ namespace Graph
 
             gr.AddEdge(0, 1);
             gr.AddEdge(1, 3);
-            gr.AddEdge(1, 5);
+            gr.AddEdge(1, 2);
+
+            gr.RemoveEdge(1, 2);
+            gr.RemoveEdge(1, 4);
         }
     }
 }

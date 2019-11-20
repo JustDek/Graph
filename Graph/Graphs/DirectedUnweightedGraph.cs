@@ -40,12 +40,26 @@ namespace Graph.Graphs
 
         public void RemoveEdge(TNodeType from, TNodeType to)
         {
-            throw new NotImplementedException();
+            if (adjacencyList.ContainsKey(from) && adjacencyList[from].Contains(to))
+            {
+                adjacencyList[from].Remove(to);
+            } 
+            else
+            {
+                throw new Exception("There is not such edge");
+            }
         }
 
         public void RemoveNode(TNodeType node)
         {
-            throw new NotImplementedException();
+            if (adjacencyList.ContainsKey(node))
+            {
+                adjacencyList.Remove(node);
+            }
+            else
+            {
+                throw new Exception("There is not such node");
+            }
         }
     }
 }
