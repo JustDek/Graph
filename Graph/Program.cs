@@ -1,4 +1,5 @@
 ﻿using System;
+using Graph.Graphs;
 
 namespace Graph
 {
@@ -6,6 +7,8 @@ namespace Graph
     {
         static void Main(string[] args)
         {
+            DirectedUnweightedGraph<int> graph = new DirectedUnweightedGraph<int>();
+
             Graph gr = new Graph();
             gr.AddEdge(0, 1);
             gr.AddEdge(0, 2);
