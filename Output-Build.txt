@@ -1,0 +1,1 @@
+﻿1>------ Build started: Project: Graph, Configuration: Debug Any CPU ------
