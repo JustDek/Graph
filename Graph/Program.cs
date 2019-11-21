@@ -17,9 +17,9 @@ namespace Graph
             gr.AddEdge(0, 1);
             gr.AddEdge(1, 3);
             gr.AddEdge(1, 2);
+            gr.AddEdge(3, 4);
 
-            gr.RemoveEdge(1, 2);
-            gr.RemoveEdge(1, 4);
+            gr.DFS(0);
         }
     }
 }

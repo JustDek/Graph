@@ -61,5 +61,30 @@ namespace Graph.Graphs
                 throw new Exception("There is not such node");
             }
         }
+
+        public void DFS(TNodeType sPoint)
+        {
+            Dictionary<TNodeType, bool> visited = new Dictionary<TNodeType, bool>() ;
+            foreach (TNodeType item in adjacencyList.Keys)
+            {
+                visited.Add(item, false);
+            }
+
+            DFSUtil(sPoint, visited);
+        }
+
+        private void DFSUtil(TNodeType currentPoint ,Dictionary<TNodeType, bool> visited)
+        {
+            visited[currentPoint] = true;
+
+            foreach (TNodeType nextPoint in adjacencyList[currentPoint])
+            {
+                if (visited[nextPoint] == false)
+                {
+                    Console.WriteLine("{0} -> {1}", currentPoint, nextPoint);
+                    DFSUtil(nextPoint, visited);
+                }
+            }
+        }
     }
 }
