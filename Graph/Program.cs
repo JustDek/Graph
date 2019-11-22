@@ -15,14 +15,15 @@ namespace Graph
                 gr.AddNode(i);
             }
 
-            gr.AddEdge(0, 1, 10);
-            gr.AddEdge(1, 3, 13);
-            gr.AddEdge(1, 2, 12);
-            gr.AddEdge(3, 4, 30);
+            gr.AddEdge(0, 1);
+            gr.AddEdge(0, 2);
+            gr.AddEdge(2, 3);
+            gr.AddEdge(1, 3);
+            gr.AddEdge(3, 4);
 
             gr.DFS(1);
             Console.WriteLine();
-            gr.BFS(1); 
+            gr.BFSSortestPath(0, 4);
         }
     }
 }

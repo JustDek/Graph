@@ -87,15 +87,18 @@ namespace Graph.Graphs
             }
         }
 
-        public void BFS(TNodeType sPoint)
+        public void BFSSortestPath(TNodeType sPoint, TNodeType ePoint)
         {
-            BFSsolve(sPoint);
+            Dictionary<TNodeType, TNodeType> path = BFSsolve(sPoint);
+
+            RestorePath(path, sPoint, ePoint);
         }
 
-        private void BFSsolve(TNodeType currentPoint)
+        private Dictionary<TNodeType, TNodeType> BFSsolve(TNodeType currentPoint)
         {
             Queue<TNodeType> queue = new Queue<TNodeType>();
             queue.Enqueue(currentPoint);
+            Dictionary<TNodeType, TNodeType> path = new Dictionary<TNodeType, TNodeType>();
 
             Dictionary<TNodeType, bool> visited = new Dictionary<TNodeType, bool>();
             foreach (TNodeType node in adjacencyList.Keys)
@@ -114,12 +117,34 @@ namespace Graph.Graphs
                     if (visited[next] == false)
                     {
                         Console.WriteLine("{0} -> {1}", node, next);
+                        path[next] = node;
                         queue.Enqueue(next);
                         visited[next] = true;
                     }
                 }
             }
 
+            return path;
+        }
+
+        private Stack<TNodeType> RestorePath(Dictionary<TNodeType, TNodeType> path, TNodeType sPoint, TNodeType ePoint)
+        {
+            TNodeType current = ePoint;
+            Stack<TNodeType> shortestPath = new Stack<TNodeType>();
+            while (!current.Equals(sPoint))
+            {
+                shortestPath.Push(current);
+                current = path[current];
+            }
+
+            shortestPath.Push(sPoint);
+
+            foreach (TNodeType node in shortestPath)
+            {
+                Console.WriteLine(node);
+            }
+
+            return shortestPath;
         }
     }
 }
