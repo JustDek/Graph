@@ -73,7 +73,7 @@ namespace Graph.Graphs
             DFSUtil(sPoint, visited);
         }
 
-        private void DFSUtil(TNodeType currentPoint ,Dictionary<TNodeType, bool> visited)
+        private void DFSUtil(TNodeType currentPoint, Dictionary<TNodeType, bool> visited)
         {
             visited[currentPoint] = true;
 
@@ -85,6 +85,41 @@ namespace Graph.Graphs
                     DFSUtil(nextPoint, visited);
                 }
             }
+        }
+
+        public void BFS(TNodeType sPoint)
+        {
+            BFSsolve(sPoint);
+        }
+
+        private void BFSsolve(TNodeType currentPoint)
+        {
+            Queue<TNodeType> queue = new Queue<TNodeType>();
+            queue.Enqueue(currentPoint);
+
+            Dictionary<TNodeType, bool> visited = new Dictionary<TNodeType, bool>();
+            foreach (TNodeType node in adjacencyList.Keys)
+            {
+                visited.Add(node, false);
+            }
+            visited[currentPoint] = true;
+
+            while (queue.Count > 0)
+            {
+                TNodeType node = queue.Dequeue();
+                List<TNodeType> neighbours = adjacencyList[node];
+                
+                foreach(TNodeType next in neighbours)
+                {
+                    if (visited[next] == false)
+                    {
+                        Console.WriteLine("{0} -> {1}", node, next);
+                        queue.Enqueue(next);
+                        visited[next] = true;
+                    }
+                }
+            }
+
         }
     }
 }

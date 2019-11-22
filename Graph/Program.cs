@@ -7,8 +7,8 @@ namespace Graph
     {
         static void Main(string[] args)
         {
-            DirectedUnweightedGraph<int> gr2 = new DirectedUnweightedGraph<int>(5);
-            DirectedWeightedGraph<int> gr = new DirectedWeightedGraph<int>(5);
+            DirectedUnweightedGraph<int> gr = new DirectedUnweightedGraph<int>(5);
+            DirectedWeightedGraph<int> gr2 = new DirectedWeightedGraph<int>(5);
 
             for (int i = 0; i < 5; i++)
             {
@@ -20,7 +20,9 @@ namespace Graph
             gr.AddEdge(1, 2, 12);
             gr.AddEdge(3, 4, 30);
 
-            gr.DFS(0);
+            gr.DFS(1);
+            Console.WriteLine();
+            gr.BFS(1); 
         }
     }
 }

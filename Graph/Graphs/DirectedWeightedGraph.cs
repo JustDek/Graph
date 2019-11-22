@@ -103,7 +103,6 @@ namespace Graph.Graphs
                     DFSUtil(nextEdge.edge, visited);
                 }
             }
-
         }
     }
 }
