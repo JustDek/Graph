@@ -7,7 +7,7 @@ namespace Graph.Graphs
 {
     struct WeightedEdge<TNodeType>
     {
-        int weight;
+        public int weight;
         public TNodeType edge;
 
         public WeightedEdge(TNodeType edge, int weight)
@@ -78,6 +78,32 @@ namespace Graph.Graphs
             {
                 throw new Exception("There is not such node");
             }
+        }
+
+        public void DFS(TNodeType sPoint)
+        {
+            Dictionary<TNodeType, bool> visited = new Dictionary<TNodeType, bool>();
+            foreach (TNodeType node in adjacencyList.Keys)
+            {
+                visited.Add(node, false);
+            }
+
+            DFSUtil(sPoint, visited);
+        }
+
+        private void DFSUtil(TNodeType currentPoint, Dictionary<TNodeType, bool> visited)
+        {
+            visited[currentPoint] = true;
+
+            foreach (WeightedEdge<TNodeType> nextEdge in adjacencyList[currentPoint])
+            {
+                if (visited[nextEdge.edge] == false)
+                {
+                    Console.WriteLine("{0} -{1}-> {2}", currentPoint, nextEdge.weight, nextEdge.edge);
+                    DFSUtil(nextEdge.edge, visited);
+                }
+            }
+
         }
     }
 }

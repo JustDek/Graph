@@ -20,8 +20,7 @@ namespace Graph
             gr.AddEdge(1, 2, 12);
             gr.AddEdge(3, 4, 30);
 
-            gr.RemoveEdge(1, 2);
-            gr.RemoveEdge(0, 2);
+            gr.DFS(0);
         }
     }
 }
