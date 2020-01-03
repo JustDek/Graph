@@ -18,7 +18,7 @@ namespace Graph.Graphs
     }
     class DirectedWeightedGraph<TNodeType> : IGraph<TNodeType>
     {
-        private List<TNodeType> nodes;
+
         private readonly int len;
         private Dictionary<TNodeType, List<WeightedEdge<TNodeType>>> adjacencyList;
         public DirectedWeightedGraph(int len)

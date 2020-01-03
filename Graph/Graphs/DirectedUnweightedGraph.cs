@@ -7,7 +7,6 @@ namespace Graph.Graphs
 {
     class DirectedUnweightedGraph<TNodeType> : IGraph<TNodeType>
     {
-        private List<TNodeType> nodes;
         private readonly int len;
         private Dictionary<TNodeType, List<TNodeType>> adjacencyList;
 
